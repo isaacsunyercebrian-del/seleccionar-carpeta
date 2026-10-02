@@ -30,8 +30,12 @@
 - 10 imágenes en `fotos-producto/prod-0..9.jpg`.
 
 ## Fase actual
-- Fases 4 y 5 COMPLETADAS. Tema subido sin errores y auto-revisado con capturas (portada, producto, móvil). ✅
-- A la espera del visto bueno del usuario para publicar (fase 6).
+- Fases 4, 5 y 6 COMPLETADAS. ✅
+- PUBLICADA EN VIVO el 2026-10-02: "Mi tienda (Claude)" (#208719184210) es el tema activo.
+  "Helio" (#208705913170) queda guardado como no publicado (reversible).
+- Web en vivo verificada sin errores (home y producto HTTP 200, 0 Liquid errors).
+- Nota: tema de trabajo = publicado. Próximos push necesitan `--allow-live`.
+- Extra entregado: anuncio en vídeo vertical `anuncios/anuncio-lumina-vertical.mp4` (~18s).
 
 ## Secciones creadas (fase 4/5)
 - `sections/mt-hero.liquid` — portada principal (imagen + titular + CTA + garantías)
