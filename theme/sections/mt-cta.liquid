@@ -1,0 +1,44 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .mt-h2 { font-size: {{ section.settings.heading_size }}px; }
+{% endstyle %}
+
+<section class="mt-cta mt-section">
+  <div class="mt-container">
+    <div class="mt-cta__inner mt-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="mt-eyebrow" style="justify-content:center">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mt-h2">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<p class="mt-lead" style="margin-left:auto;margin-right:auto;max-width:560px">{{ section.settings.text | newline_to_br }}</p>{%- endif -%}
+      {%- if section.settings.btn_label != blank -%}
+        <a class="mt-btn mt-btn--primary" href="{{ section.settings.btn_link | default: '#' }}">{{ section.settings.btn_label }}</a>
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}<p class="mt-cta__note">{{ section.settings.note }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LUMINA · Llamada final",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Ilumina tu casa hoy" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "La luz que tu hogar estaba esperando" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Sencilla de poner, imposible de dejar de usar. Pruébala 30 días sin riesgo." },
+    { "type": "text", "id": "btn_label", "label": "Texto del botón", "default": "Comprar ahora" },
+    { "type": "url", "id": "btn_link", "label": "Enlace del botón" },
+    { "type": "text", "id": "note", "label": "Nota bajo el botón", "default": "Envío gratis · Entrega 24-72h · Devolución en 30 días" },
+    { "type": "header", "content": "Estilo" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#0e0c0b" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño del título (px)", "min": 26, "max": 64, "step": 2, "unit": "px", "default": 44 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 88 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "LUMINA · Llamada final" } ]
+}
+{% endschema %}

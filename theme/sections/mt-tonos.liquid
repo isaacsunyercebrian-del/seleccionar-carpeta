@@ -1,0 +1,68 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .mt-head { text-align: center; margin-left:auto; margin-right:auto; }
+  #shopify-section-{{ section.id }} .mt-h2 { font-size: {{ section.settings.heading_size }}px; }
+{% endstyle %}
+
+<section class="mt-tonos mt-section">
+  <div class="mt-container">
+    <div class="mt-head mt-head--center mt-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="mt-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mt-h2">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.lead != blank -%}<p class="mt-lead">{{ section.settings.lead | newline_to_br }}</p>{%- endif -%}
+    </div>
+
+    <div class="mt-tones">
+      {%- for block in section.blocks -%}
+        <div class="mt-tone mt-tone--{{ block.settings.tone }} mt-reveal" style="--mt-delay: {{ forloop.index0 | times: 0.1 }}s" {{ block.shopify_attributes }}>
+          <div class="mt-tone__swatch"></div>
+          <div class="mt-tone__body">
+            <span class="mt-tone__k">{{ block.settings.kelvin }}</span>
+            <h3 class="mt-tone__t">{{ block.settings.title }}</h3>
+            <p class="mt-tone__d">{{ block.settings.text | newline_to_br }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LUMINA · Tonos de luz",
+  "tag": "section",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "tono", "name": "Tono", "settings": [
+      { "type": "select", "id": "tone", "label": "Color", "options": [
+        { "value": "warm", "label": "Cálida" },
+        { "value": "neutral", "label": "Neutra" },
+        { "value": "cool", "label": "Fría" }
+      ], "default": "warm" },
+      { "type": "text", "id": "kelvin", "label": "Temperatura", "default": "3000K" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Luz cálida" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Acogedora y relajante." }
+    ] }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Una luz para cada momento" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Tres tonos, en un toque" },
+    { "type": "textarea", "id": "lead", "label": "Texto de apoyo", "default": "Cambia la temperatura de la luz según lo que necesites: descansar, cocinar o ver con todo detalle." },
+    { "type": "header", "content": "Estilo" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#0e0c0b" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño del título (px)", "min": 24, "max": 56, "step": 2, "unit": "px", "default": 40 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 100 }
+  ],
+  "presets": [ { "name": "LUMINA · Tonos de luz", "blocks": [
+    { "type": "tono", "settings": { "tone": "warm", "kelvin": "3000K", "title": "Cálida", "text": "Ambiente acogedor para dormitorios, pasillos y mesitas de noche." } },
+    { "type": "tono", "settings": { "tone": "neutral", "kelvin": "4000K", "title": "Neutra", "text": "Luz natural y equilibrada para el día a día en cualquier estancia." } },
+    { "type": "tono", "settings": { "tone": "cool", "kelvin": "6000K", "title": "Fría", "text": "Luz nítida y brillante para cocinas, armarios y zonas de trabajo." } }
+  ] } ]
+}
+{% endschema %}

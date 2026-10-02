@@ -30,7 +30,32 @@
 - 10 imágenes en `fotos-producto/prod-0..9.jpg`.
 
 ## Fase actual
-- Fase 4 (construcción) EN CURSO. Estilo elegido sin esperar: "Luz cálida en la oscuridad".
+- Fases 4 y 5 COMPLETADAS. Tema subido sin errores y auto-revisado con capturas (portada, producto, móvil). ✅
+- A la espera del visto bueno del usuario para publicar (fase 6).
+
+## Secciones creadas (fase 4/5)
+- `sections/mt-hero.liquid` — portada principal (imagen + titular + CTA + garantías)
+- `sections/mt-marquee.liquid` — marquesina de ventajas
+- `sections/mt-beneficios.liquid` — rejilla de 6 beneficios con iconos
+- `sections/mt-destacado.liquid` — bloque editorial imagen + lista
+- `sections/mt-tonos.liquid` — 3 tonos de luz
+- `sections/mt-usos.liquid` — galería de usos
+- `sections/mt-pasos.liquid` — pasos de instalación
+- `sections/mt-tamanos.liquid` — tamaños 20/30/40/50
+- `sections/mt-garantia.liquid` — fila de garantías
+- `sections/mt-faq.liquid` — preguntas frecuentes (acordeón)
+- `sections/mt-cta.liquid` — llamada final
+- `snippets/mt-icon.liquid` — iconos de línea
+- `assets/mt-styles.css`, `assets/mt-scripts.js`, `assets/mt-favicon.svg`
+- `sections/header.liquid` (marca "Lumina"), `sections/footer.liquid` (pie propio)
+- `templates/index.json` (portada), `templates/product.json` (producto: Dawn main-product oscuro + secciones propias)
+- `config/settings_data.json` (paleta oscura + ámbar, Poppins/Assistant), header-group, footer-group
+
+## Pendiente de pegar por el usuario (sin Admin API)
+- ⬜ Título y descripción del producto en español (se los doy listos).
+- ⬜ Páginas legales en Configuración → Políticas (los enlaces del footer ya apuntan ahí).
+- ⬜ (Opcional) Borrar de la galería del producto las fotos con texto en inglés.
+- ⬜ Publicar el tema (con su OK).
 
 ## Decisiones de diseño
 - Concepto: marca premium de iluminación cálida. Tema OSCURO con brillo ámbar.

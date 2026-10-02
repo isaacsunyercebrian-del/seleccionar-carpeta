@@ -1,0 +1,45 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .mt-marquee__track {
+    --mt-speed: {{ section.settings.speed }}s;
+    font-size: {{ section.settings.text_size }}px;
+  }
+{% endstyle %}
+
+<div class="mt-marquee mt-section">
+  <div class="mt-marquee__track" data-loop>
+    {%- for block in section.blocks -%}
+      <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LUMINA · Marquesina",
+  "tag": "section",
+  "blocks": [
+    { "type": "item", "name": "Frase", "settings": [
+      { "type": "text", "id": "text", "label": "Texto", "default": "Sensor de movimiento" }
+    ] }
+  ],
+  "settings": [
+    { "type": "range", "id": "speed", "label": "Velocidad (más = más lento)", "min": 10, "max": 60, "step": 2, "unit": "s", "default": 34 },
+    { "type": "range", "id": "text_size", "label": "Tamaño del texto (px)", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "presets": [ { "name": "LUMINA · Marquesina", "blocks": [
+    { "type": "item", "settings": { "text": "Sensor de movimiento" } },
+    { "type": "item", "settings": { "text": "Recargable por USB-C" } },
+    { "type": "item", "settings": { "text": "Imantada · sin cables" } },
+    { "type": "item", "settings": { "text": "3 tonos de luz" } },
+    { "type": "item", "settings": { "text": "Ultrafina" } },
+    { "type": "item", "settings": { "text": "Brillo regulable" } }
+  ] } ]
+}
+{% endschema %}

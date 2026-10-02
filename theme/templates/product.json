@@ -3,83 +3,112 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
+        "title": { "type": "title" },
+        "price": { "type": "price" },
+        "pitch": {
           "type": "text",
           "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
+            "text": "Luz LED ultrafina con sensor de movimiento. Sin cables, recargable e imantada: ilumina armarios, cocinas y pasillos en segundos.",
+            "text_style": "body"
           }
-        },
-        "title": {
-          "type": "title"
-        },
-        "price": {
-          "type": "price"
         },
         "variant_picker": {
           "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
+          "settings": { "picker_type": "button", "swatch_shape": "circle" }
         },
-        "quantity_selector": {
-          "type": "quantity_selector"
-        },
+        "quantity_selector": { "type": "quantity_selector" },
         "buy_buttons": {
           "type": "buy_buttons",
+          "settings": { "show_dynamic_checkout": true, "show_gift_card_recipient": false }
+        },
+        "tab_specs": {
+          "type": "collapsible_tab",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "heading": "Especificaciones",
+            "icon": "box",
+            "content": "<ul><li>Tamaños: 20 / 30 / 40 / 50 cm</li><li>3 tonos de luz: cálida 3000K, neutra 4000K, fría 6000K</li><li>Brillo regulable del 10% al 100%</li><li>Sensor de movimiento hasta 3 m y 120°</li><li>Carga por USB-C (cable incluido)</li><li>Fijación magnética + base adhesiva</li></ul>"
           }
         },
-        "description": {
-          "type": "description"
-        },
-        "share": {
-          "type": "share",
+        "tab_envio": {
+          "type": "collapsible_tab",
           "settings": {
-            "share_label": "Share"
+            "heading": "Envío y devoluciones",
+            "icon": "truck",
+            "content": "<p>Envío gratis a toda la península en 24-72h. Si no te convence, tienes 30 días para devolverla con reembolso completo.</p>"
           }
         }
       },
-      "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
-      ],
+      "block_order": ["title", "price", "pitch", "variant_picker", "quantity_selector", "buy_buttons", "tab_specs", "tab_envio"],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "media_position": "left",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "image_zoom": "lightbox",
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "padding_top": 48,
+        "padding_bottom": 36
       }
     },
-    "disclosures": {
-      "type": "disclosures",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
+    "p_beneficios": {
+      "type": "mt-beneficios",
+      "settings": { "eyebrow": "Por qué vas a quererla", "heading": "Todo lo que hace especial a Lumina" },
+      "blocks": {
+        "b1": { "type": "beneficio", "settings": { "icon": "motion", "title": "Se enciende sola", "text": "Sensor de movimiento que la activa al acercarte y la apaga sola a los segundos." } },
+        "b2": { "type": "beneficio", "settings": { "icon": "usb", "title": "Recargable USB-C", "text": "Sin pilas. Una carga dura semanas y se recarga en cualquier sitio." } },
+        "b3": { "type": "beneficio", "settings": { "icon": "magnet", "title": "Imantada, sin cables", "text": "Base adhesiva o magnética. La pones y la quitas en segundos." } },
+        "b4": { "type": "beneficio", "settings": { "icon": "palette", "title": "3 tonos de luz", "text": "Cálida, neutra o fría para cada rincón de tu casa." } },
+        "b5": { "type": "beneficio", "settings": { "icon": "dimmer", "title": "Brillo regulable", "text": "Del 10% al 100%, de luz tenue a plena potencia." } },
+        "b6": { "type": "beneficio", "settings": { "icon": "slim", "title": "Ultrafina", "text": "Tan fina que casi no se ve. Encaja donde quieras." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"]
+    },
+    "p_tonos": {
+      "type": "mt-tonos",
+      "blocks": {
+        "t1": { "type": "tono", "settings": { "tone": "warm", "kelvin": "3000K", "title": "Cálida", "text": "Acogedora para dormitorios y pasillos." } },
+        "t2": { "type": "tono", "settings": { "tone": "neutral", "kelvin": "4000K", "title": "Neutra", "text": "Equilibrada para el día a día." } },
+        "t3": { "type": "tono", "settings": { "tone": "cool", "kelvin": "6000K", "title": "Fría", "text": "Nítida para cocinas y zonas de trabajo." } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "p_pasos": {
+      "type": "mt-pasos",
+      "blocks": {
+        "p1": { "type": "paso", "settings": { "title": "Cárgala", "text": "Conecta el cable USB-C incluido. En un par de horas, lista para semanas." } },
+        "p2": { "type": "paso", "settings": { "title": "Pégala o imántala", "text": "Base adhesiva o magnética donde quieras. Se alinea en un segundo." } },
+        "p3": { "type": "paso", "settings": { "title": "Disfruta la luz", "text": "Elige tono y brillo. Se enciende sola cuando te acercas." } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "p_garantia": {
+      "type": "mt-garantia",
+      "blocks": {
+        "g1": { "type": "garantia", "settings": { "icon": "truck", "title": "Envío gratis", "text": "A toda la península en 24-72h." } },
+        "g2": { "type": "garantia", "settings": { "icon": "refresh", "title": "30 días de prueba", "text": "Devolución con reembolso completo." } },
+        "g3": { "type": "garantia", "settings": { "icon": "shield", "title": "Garantía 2 años", "text": "Cubrimos cualquier defecto de fábrica." } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    },
+    "p_faq": {
+      "type": "mt-faq",
+      "blocks": {
+        "f1": { "type": "pregunta", "settings": { "q": "¿Necesita cables o enchufe?", "a": "No. Es inalámbrica y se recarga por USB-C. Una carga dura varias semanas." } },
+        "f2": { "type": "pregunta", "settings": { "q": "¿Cómo se sujeta?", "a": "Con base adhesiva o soporte magnético. Se pone y se quita sin dañar la superficie." } },
+        "f3": { "type": "pregunta", "settings": { "q": "¿De verdad se enciende sola?", "a": "Sí, con sensor de movimiento hasta 3 m. Se apaga sola para ahorrar batería. También tiene modo de luz fija." } },
+        "f4": { "type": "pregunta", "settings": { "q": "¿Qué tamaño elijo?", "a": "20-30 cm para cajones y mesitas; 40-50 cm para encimeras, pasillos y armarios grandes." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
     },
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "También te puede gustar",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
@@ -95,9 +124,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "disclosures",
-    "related-products"
-  ]
+  "order": ["main", "p_beneficios", "p_tonos", "p_pasos", "p_garantia", "p_faq", "related-products"]
 }

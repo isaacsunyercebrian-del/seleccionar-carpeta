@@ -1,0 +1,120 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .mt-hero__scrim {
+    opacity: {{ section.settings.overlay | divided_by: 100.0 }};
+  }
+  #shopify-section-{{ section.id }} .mt-hero__inner {
+    text-align: {{ section.settings.text_align }};
+  }
+  #shopify-section-{{ section.id }} .mt-hero__title {
+    font-size: clamp(2.2rem, 6vw, {{ section.settings.heading_size }}px);
+  }
+  #shopify-section-{{ section.id }} .mt-hero .mt-lead {
+    font-size: {{ section.settings.body_size }}px;
+  }
+  {% if section.settings.text_align == 'center' %}
+    #shopify-section-{{ section.id }} .mt-hero__inner { margin: 0 auto; }
+    #shopify-section-{{ section.id }} .mt-hero__cta,
+    #shopify-section-{{ section.id }} .mt-hero__trust { justify-content: center; }
+  {% endif %}
+{% endstyle %}
+
+<section class="mt-hero mt-section">
+  <div class="mt-hero__bg">
+    {%- if section.settings.image != blank -%}
+      <img src="{{ section.settings.image | image_url: width: 2200 }}"
+           alt="{{ section.settings.image.alt | escape }}"
+           width="2200" height="1400"
+           loading="eager" fetchpriority="high">
+    {%- else -%}
+      <img src="{{ 'mt-hero.jpg' | asset_url }}" alt="" loading="eager" fetchpriority="high">
+    {%- endif -%}
+  </div>
+  <div class="mt-hero__scrim"></div>
+
+  <div class="mt-container">
+    <div class="mt-hero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="mt-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      <h1 class="mt-h1 mt-hero__title">
+        {{ section.settings.headline }}
+        {%- if section.settings.headline_accent != blank %}
+          <span class="mt-glow">{{ section.settings.headline_accent }}</span>
+        {%- endif -%}
+      </h1>
+
+      {%- if section.settings.subtext != blank -%}
+        <p class="mt-lead">{{ section.settings.subtext | newline_to_br }}</p>
+      {%- endif -%}
+
+      <div class="mt-hero__cta">
+        {%- if section.settings.btn1_label != blank -%}
+          <a class="mt-btn mt-btn--primary" href="{{ section.settings.btn1_link | default: '#' }}">
+            {{ section.settings.btn1_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}
+          <a class="mt-btn mt-btn--ghost" href="{{ section.settings.btn2_link | default: '#' }}">
+            {{ section.settings.btn2_label }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_trust -%}
+        <div class="mt-hero__trust">
+          {%- if section.settings.trust_1 != blank -%}
+            <span>{% render 'mt-icon', name: 'check' %}{{ section.settings.trust_1 }}</span>
+          {%- endif -%}
+          {%- if section.settings.trust_2 != blank -%}
+            <span>{% render 'mt-icon', name: 'truck' %}{{ section.settings.trust_2 }}</span>
+          {%- endif -%}
+          {%- if section.settings.trust_3 != blank -%}
+            <span>{% render 'mt-icon', name: 'shield' %}{{ section.settings.trust_3 }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LUMINA · Portada",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen de fondo" },
+    { "type": "range", "id": "overlay", "label": "Oscurecer fondo", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 55 },
+    { "type": "header", "content": "Textos" },
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Iluminación inteligente para el hogar" },
+    { "type": "text", "id": "headline", "label": "Título", "default": "Luz cálida donde nunca" },
+    { "type": "text", "id": "headline_accent", "label": "Título (parte resaltada)", "default": "llegó la luz" },
+    { "type": "textarea", "id": "subtext", "label": "Texto", "default": "Una luz LED ultrafina que se enciende sola con el movimiento. Sin cables, recargable e imantada: la pegas y listo." },
+    { "type": "header", "content": "Botones" },
+    { "type": "text", "id": "btn1_label", "label": "Botón principal", "default": "Comprar ahora" },
+    { "type": "url", "id": "btn1_link", "label": "Enlace del botón principal" },
+    { "type": "text", "id": "btn2_label", "label": "Botón secundario", "default": "Ver cómo funciona" },
+    { "type": "url", "id": "btn2_link", "label": "Enlace del botón secundario" },
+    { "type": "header", "content": "Garantías (fila inferior)" },
+    { "type": "checkbox", "id": "show_trust", "label": "Mostrar garantías", "default": true },
+    { "type": "text", "id": "trust_1", "label": "Garantía 1", "default": "Envío gratis" },
+    { "type": "text", "id": "trust_2", "label": "Garantía 2", "default": "Entrega 24-72h" },
+    { "type": "text", "id": "trust_3", "label": "Garantía 3", "default": "30 días de prueba" },
+    { "type": "header", "content": "Tipografía y alineación" },
+    { "type": "select", "id": "text_align", "label": "Alineación", "options": [
+      { "value": "left", "label": "Izquierda" },
+      { "value": "center", "label": "Centro" }
+    ], "default": "left" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño del título (px)", "min": 40, "max": 96, "step": 2, "unit": "px", "default": 68 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto (px)", "min": 14, "max": 24, "step": 1, "unit": "px", "default": 18 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 0 }
+  ],
+  "presets": [ { "name": "LUMINA · Portada" } ]
+}
+{% endschema %}

@@ -205,7 +205,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 mt-wordmark">{{ section.settings.brand_text | default: 'Lumina' }}</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +248,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 mt-wordmark">{{ section.settings.brand_text | default: 'Lumina' }}</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -504,6 +504,12 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Nombre de la marca (si no usas logo)",
+      "default": "Lumina"
+    },
     {
       "type": "select",
       "id": "logo_position",

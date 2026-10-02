@@ -1,0 +1,78 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .mt-head { text-align: {{ section.settings.text_align }}; {% if section.settings.text_align == 'center' %}margin-left:auto;margin-right:auto;{% endif %} }
+  #shopify-section-{{ section.id }} .mt-h2 { font-size: {{ section.settings.heading_size }}px; }
+{% endstyle %}
+
+<section class="mt-benefits mt-section">
+  <div class="mt-container">
+    <div class="mt-head {% if section.settings.text_align == 'center' %}mt-head--center{% endif %} mt-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="mt-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mt-h2">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.lead != blank -%}<p class="mt-lead">{{ section.settings.lead | newline_to_br }}</p>{%- endif -%}
+    </div>
+
+    <div class="mt-benefits__grid">
+      {%- for block in section.blocks -%}
+        <div class="mt-card mt-reveal" style="--mt-delay: {{ forloop.index0 | times: 0.07 }}s" {{ block.shopify_attributes }}>
+          <div class="mt-card__ico">{% render 'mt-icon', name: block.settings.icon %}</div>
+          <h3 class="mt-card__t">{{ block.settings.title }}</h3>
+          <p class="mt-card__d">{{ block.settings.text | newline_to_br }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LUMINA · Beneficios",
+  "tag": "section",
+  "max_blocks": 8,
+  "blocks": [
+    { "type": "beneficio", "name": "Beneficio", "settings": [
+      { "type": "select", "id": "icon", "label": "Icono", "options": [
+        { "value": "motion", "label": "Sensor de movimiento" },
+        { "value": "usb", "label": "USB / carga" },
+        { "value": "magnet", "label": "Imán" },
+        { "value": "slim", "label": "Ultrafina" },
+        { "value": "palette", "label": "Tonos de luz" },
+        { "value": "dimmer", "label": "Brillo regulable" },
+        { "value": "bolt", "label": "Rayo" },
+        { "value": "clock", "label": "Reloj" },
+        { "value": "shield", "label": "Escudo" },
+        { "value": "truck", "label": "Envío" }
+      ], "default": "motion" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Beneficio" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Explica aquí la ventaja." }
+    ] }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Por qué vas a quererla" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Pensada hasta el último detalle" },
+    { "type": "textarea", "id": "lead", "label": "Texto de apoyo", "default": "Todo lo que necesitas de una luz de ambiente, sin obras, sin cables y sin complicaciones." },
+    { "type": "header", "content": "Estilo" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#0e0c0b" },
+    { "type": "select", "id": "text_align", "label": "Alineación del título", "options": [
+      { "value": "left", "label": "Izquierda" },
+      { "value": "center", "label": "Centro" }
+    ], "default": "center" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño del título (px)", "min": 24, "max": 56, "step": 2, "unit": "px", "default": 40 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 100 }
+  ],
+  "presets": [ { "name": "LUMINA · Beneficios", "blocks": [
+    { "type": "beneficio", "settings": { "icon": "motion", "title": "Se enciende sola", "text": "Un sensor de movimiento la activa al acercarte y la apaga sola a los segundos." } },
+    { "type": "beneficio", "settings": { "icon": "usb", "title": "Recargable USB-C", "text": "Olvídate de pilas. Una carga dura semanas y se recarga en cualquier sitio." } },
+    { "type": "beneficio", "settings": { "icon": "magnet", "title": "Imantada, sin cables", "text": "Se pega con el adhesivo o se imanta. La pones y la quitas en segundos." } },
+    { "type": "beneficio", "settings": { "icon": "palette", "title": "3 tonos de luz", "text": "Cálida, neutra o fría. Elige la temperatura perfecta para cada rincón." } },
+    { "type": "beneficio", "settings": { "icon": "dimmer", "title": "Brillo regulable", "text": "Del 10% al 100%. Desde una luz tenue de noche hasta plena potencia." } },
+    { "type": "beneficio", "settings": { "icon": "slim", "title": "Ultrafina y elegante", "text": "Tan fina que casi no se ve. Encaja en armarios, estantes y rincones." } }
+  ] } ]
+}
+{% endschema %}

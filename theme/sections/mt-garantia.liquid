@@ -1,0 +1,55 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+{% endstyle %}
+
+<section class="mt-garantia mt-section">
+  <div class="mt-container">
+    <div class="mt-trust">
+      {%- for block in section.blocks -%}
+        <div class="mt-trust__item mt-reveal" style="--mt-delay: {{ forloop.index0 | times: 0.08 }}s" {{ block.shopify_attributes }}>
+          {% render 'mt-icon', name: block.settings.icon %}
+          <div>
+            <h3 class="mt-trust__t">{{ block.settings.title }}</h3>
+            <p class="mt-trust__d">{{ block.settings.text | newline_to_br }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LUMINA · Garantías",
+  "tag": "section",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "garantia", "name": "Garantía", "settings": [
+      { "type": "select", "id": "icon", "label": "Icono", "options": [
+        { "value": "truck", "label": "Envío" },
+        { "value": "refresh", "label": "Devolución" },
+        { "value": "shield", "label": "Garantía" },
+        { "value": "bolt", "label": "Rapidez" },
+        { "value": "clock", "label": "Reloj" }
+      ], "default": "truck" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Título" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Texto breve." }
+    ] }
+  ],
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#0e0c0b" },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 180, "step": 4, "unit": "px", "default": 72 }
+  ],
+  "presets": [ { "name": "LUMINA · Garantías", "blocks": [
+    { "type": "garantia", "settings": { "icon": "truck", "title": "Envío gratis", "text": "A toda la península. Recíbela en 24-72h, lista para usar." } },
+    { "type": "garantia", "settings": { "icon": "refresh", "title": "30 días de prueba", "text": "¿No te convence? Te devolvemos el dinero sin preguntas." } },
+    { "type": "garantia", "settings": { "icon": "shield", "title": "Garantía de 2 años", "text": "Compra tranquilo: cubrimos cualquier defecto de fábrica." } }
+  ] } ]
+}
+{% endschema %}

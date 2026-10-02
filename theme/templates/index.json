@@ -1,75 +1,110 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+    "hero": {
+      "type": "mt-hero",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "btn1_label": "Comprar ahora",
+        "btn1_link": "/products/led-cabinet-night-light-motion-sensor-wireless-ultra-thin-under-cabinet-lamp-for-kitchen-bedroom-wardrobe-indoor-lighting",
+        "btn2_label": "Ver cómo funciona",
+        "btn2_link": "#shopify-section-beneficios"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "marquee": {
+      "type": "mt-marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "text": "Sensor de movimiento" } },
+        "m2": { "type": "item", "settings": { "text": "Recargable USB-C" } },
+        "m3": { "type": "item", "settings": { "text": "Imantada · sin cables" } },
+        "m4": { "type": "item", "settings": { "text": "3 tonos de luz" } },
+        "m5": { "type": "item", "settings": { "text": "Brillo regulable" } },
+        "m6": { "type": "item", "settings": { "text": "Ultrafina" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"]
+    },
+    "beneficios": {
+      "type": "mt-beneficios",
+      "blocks": {
+        "b1": { "type": "beneficio", "settings": { "icon": "motion", "title": "Se enciende sola", "text": "Un sensor de movimiento la activa al acercarte y la apaga sola a los segundos." } },
+        "b2": { "type": "beneficio", "settings": { "icon": "usb", "title": "Recargable USB-C", "text": "Olvídate de pilas. Una carga dura semanas y se recarga en cualquier sitio." } },
+        "b3": { "type": "beneficio", "settings": { "icon": "magnet", "title": "Imantada, sin cables", "text": "Se pega con el adhesivo o se imanta. La pones y la quitas en segundos." } },
+        "b4": { "type": "beneficio", "settings": { "icon": "palette", "title": "3 tonos de luz", "text": "Cálida, neutra o fría. Elige la temperatura perfecta para cada rincón." } },
+        "b5": { "type": "beneficio", "settings": { "icon": "dimmer", "title": "Brillo regulable", "text": "Del 10% al 100%. Desde una luz tenue de noche hasta plena potencia." } },
+        "b6": { "type": "beneficio", "settings": { "icon": "slim", "title": "Ultrafina y elegante", "text": "Tan fina que casi no se ve. Encaja en armarios, estantes y rincones." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"]
+    },
+    "destacado": {
+      "type": "mt-destacado",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "btn_label": "Quiero la mía",
+        "btn_link": "/products/led-cabinet-night-light-motion-sensor-wireless-ultra-thin-under-cabinet-lamp-for-kitchen-bedroom-wardrobe-indoor-lighting"
+      }
+    },
+    "tonos": {
+      "type": "mt-tonos",
+      "blocks": {
+        "t1": { "type": "tono", "settings": { "tone": "warm", "kelvin": "3000K", "title": "Cálida", "text": "Ambiente acogedor para dormitorios, pasillos y mesitas de noche." } },
+        "t2": { "type": "tono", "settings": { "tone": "neutral", "kelvin": "4000K", "title": "Neutra", "text": "Luz natural y equilibrada para el día a día en cualquier estancia." } },
+        "t3": { "type": "tono", "settings": { "tone": "cool", "kelvin": "6000K", "title": "Fría", "text": "Luz nítida y brillante para cocinas, armarios y zonas de trabajo." } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "usos": {
+      "type": "mt-usos",
+      "blocks": {
+        "u1": { "type": "uso", "settings": { "label": "Armarios y vestidores" } },
+        "u2": { "type": "uso", "settings": { "label": "Cocina y estantes" } },
+        "u3": { "type": "uso", "settings": { "label": "Recargable, sin enchufe" } },
+        "u4": { "type": "uso", "settings": { "label": "Pasillos y escaleras" } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4"]
+    },
+    "pasos": {
+      "type": "mt-pasos",
+      "blocks": {
+        "p1": { "type": "paso", "settings": { "title": "Cárgala", "text": "Conecta el cable USB-C incluido. En un par de horas está lista para semanas." } },
+        "p2": { "type": "paso", "settings": { "title": "Pégala o imántala", "text": "Coloca la base adhesiva o magnética donde quieras. Se alinea en un segundo." } },
+        "p3": { "type": "paso", "settings": { "title": "Disfruta la luz", "text": "Elige tono y brillo. A partir de ahí, se enciende sola cuando te acercas." } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "tamanos": {
+      "type": "mt-tamanos",
+      "blocks": {
+        "s1": { "type": "tamano", "settings": { "size": "20 cm", "text": "Cajones y estantes", "bar_width": 40 } },
+        "s2": { "type": "tamano", "settings": { "size": "30 cm", "text": "Mesitas y vitrinas", "bar_width": 60 } },
+        "s3": { "type": "tamano", "settings": { "size": "40 cm", "text": "Encimeras y pasillos", "bar_width": 80 } },
+        "s4": { "type": "tamano", "settings": { "size": "50 cm", "text": "Armarios y espacios grandes", "bar_width": 100 } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "garantia": {
+      "type": "mt-garantia",
+      "blocks": {
+        "g1": { "type": "garantia", "settings": { "icon": "truck", "title": "Envío gratis", "text": "A toda la península. Recíbela en 24-72h, lista para usar." } },
+        "g2": { "type": "garantia", "settings": { "icon": "refresh", "title": "30 días de prueba", "text": "¿No te convence? Te devolvemos el dinero sin preguntas." } },
+        "g3": { "type": "garantia", "settings": { "icon": "shield", "title": "Garantía de 2 años", "text": "Compra tranquilo: cubrimos cualquier defecto de fábrica." } }
+      },
+      "block_order": ["g1", "g2", "g3"]
+    },
+    "faq": {
+      "type": "mt-faq",
+      "blocks": {
+        "f1": { "type": "pregunta", "settings": { "q": "¿Necesita cables o enchufe?", "a": "No. Es totalmente inalámbrica y se recarga por USB-C. Una carga dura varias semanas con un uso normal." } },
+        "f2": { "type": "pregunta", "settings": { "q": "¿Cómo se sujeta?", "a": "Incluye base adhesiva y soporte magnético. Puedes pegarla o imantarla y quitarla cuando quieras, sin dañar la superficie." } },
+        "f3": { "type": "pregunta", "settings": { "q": "¿De verdad se enciende sola?", "a": "Sí. El sensor detecta el movimiento hasta 3 metros y se apaga sola a los pocos segundos para ahorrar batería. También tiene modo de luz fija." } },
+        "f4": { "type": "pregunta", "settings": { "q": "¿Qué tamaño elijo?", "a": "20-30 cm para cajones, mesitas y estantes; 40-50 cm para encimeras, pasillos y armarios grandes. Puedes combinar varias." } },
+        "f5": { "type": "pregunta", "settings": { "q": "¿Cuánto tarda el envío?", "a": "Lo preparamos en 24h y suele llegar en 24-72h. El envío es gratuito a toda la península." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    "cta": {
+      "type": "mt-cta",
+      "settings": {
+        "btn_label": "Comprar ahora",
+        "btn_link": "/products/led-cabinet-night-light-motion-sensor-wireless-ultra-thin-under-cabinet-lamp-for-kitchen-bedroom-wardrobe-indoor-lighting"
       }
     }
   },
-  "order": [
-    "image_banner",
-    "featured_collection"
-  ]
+  "order": ["hero", "marquee", "beneficios", "destacado", "tonos", "usos", "pasos", "tamanos", "garantia", "faq", "cta"]
 }
