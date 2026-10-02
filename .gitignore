@@ -1,0 +1,15 @@
+# Secretos y claves — NUNCA subir
+.clave-tienda.txt
+.clave-openai.txt
+clave-openai.txt
+*token*
+.env
+.env.*
+
+# Temporales de la Admin API
+.tmp-*.json
+
+# Dependencias / sistema
+node_modules/
+.DS_Store
+Thumbs.db
